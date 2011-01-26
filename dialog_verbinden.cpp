@@ -33,6 +33,7 @@ void Dialog_Verbinden::initialisieren()
 	this->benutzer = ui->lineEdit_Benutzer->text();
 	this->passwort = ui->lineEdit_Passwort->text();
 	this->begrenzung = ui->spinBox->value();
+	this->datenbank = ui->lineEdit_Datenbank->text();
 }
 
 void Dialog_Verbinden::on_buttonBox_accepted()
