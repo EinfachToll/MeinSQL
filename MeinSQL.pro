@@ -22,4 +22,5 @@ HEADERS += hauptfenster.hh \
 FORMS += hauptfenster.ui \
     dialog_verbinden.ui
 
-OTHER_FILES +=
+OTHER_FILES += \
+    Readme.txt

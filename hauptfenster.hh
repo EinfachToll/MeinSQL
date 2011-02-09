@@ -53,6 +53,7 @@ private slots:
 	void on_pushButton_Trennen_clicked();
 	void on_pushButton_clicked();
 	void on_pushButton_Verbinden_clicked();
+	void neueAbfr(bool);
 };
 
 #endif // HAUPTFENSTER_HH

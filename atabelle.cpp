@@ -14,14 +14,15 @@ void ATabelle::setzAbfr(QString abfr)
 	if(this->abfrmodell->lastError().type() != 0)
 	{
 		//this->ui->plainTextEdit_Log->appendPlainText(tablemodel->lastError().text());
-		//this->ui->tabWidget->setCurrentIndex(0);
+		last_Errors = abfrmodell->lastError().text();
+		emit errors(true);
 	}
 	else
 	{
 		this->setModel(this->abfrmodell);
 		this->resizeColumnsToContents();
 		this->show();
-		//this->ui->tabWidget->setCurrentIndex(3);
+		emit errors(false);
 	}
 }
 

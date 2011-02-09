@@ -24,10 +24,11 @@ Hauptfenster::Hauptfenster(QWidget *parent) :
 	this->sqltabelle = new SQLTabelle();
 	ui->verticalLayout_SQLTab->addWidget(this->sqltabelle);
 	this->abfrageTE = new AbfrageTextEdit(this);
-	ui->verticalLayout_5->addWidget(this->abfrageTE);
+	ui->horizontalLayout->addWidget(this->abfrageTE);
 
 	this->ui->toolButton->setMenu(hist_einst_menue);
 	connect(this->abfrageTE, SIGNAL(neueAbfrage(QString)), this->tabel_abfrage, SLOT(setzAbfr(QString)));
+	connect(this->tabel_abfrage, SIGNAL(errors(bool)), this, SLOT(neueAbfr(bool)));
 }
 
 Hauptfenster::~Hauptfenster()
@@ -139,4 +140,15 @@ void Hauptfenster::on_listWidget_Tabellen_itemActivated(QListWidgetItem* item)
 void Hauptfenster::on_pushButton_2_clicked()
 {
 	this->close();
+}
+
+void Hauptfenster::neueAbfr(bool errors)
+{
+	if(errors)
+	{
+		ui->plainTextEdit_Log->appendPlainText(tabel_abfrage->last_Errors);
+		ui->tabWidget->setCurrentIndex(0);
+	}
+	else
+		ui->tabWidget->setCurrentIndex(3);
 }

@@ -32,11 +32,15 @@ private:
 	void wasrunter();
 	void wasspeichern();
 	void wasladen();
+	bool wasgeaendert;
 signals:
 	void neueAbfrage(QString);
 
 public slots:
 	void abfragemachen(QString);
+	void abfragespeichern();
+	void abfrageladen();
+	void hatsichwasgetan();
 
 };
 
