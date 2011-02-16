@@ -41,6 +41,7 @@ public slots:
 	void abfragespeichern();
 	void abfrageladen();
 	void hatsichwasgetan();
+	void errors_occured(bool);
 
 };
 

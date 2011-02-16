@@ -1,33 +1,42 @@
 #include "atabelle.hh"
+#include <iostream>
+#include <QStringList>
+#include <QDebug>
 
 ATabelle::ATabelle(QWidget *parent) :
     Tabelle(parent)
 {
-	this->abfrmodell = new QSqlQueryModel();
+	//this->abfrmodell = new QSqlQueryModel();
 }
-#include <iostream>
+
 void ATabelle::setzAbfr(QString abfr)
 {
-	std::cout << abfr.toStdString() << "\n";
-	this->abfrmodell->setQuery(abfr);
+	QStringList queries = abfr.split(QRegExp(";\\s*\n"), QString::SkipEmptyParts);
 
-	if(this->abfrmodell->lastError().type() != 0)
+	for(int i=0; i<queries.count(); ++i)
 	{
-		//this->ui->plainTextEdit_Log->appendPlainText(tablemodel->lastError().text());
-		last_Errors = abfrmodell->lastError().text();
-		emit errors(true);
+		QSqlQueryModel* tempmodel = new QSqlQueryModel();
+		tempmodel->setQuery(queries.at(i));
+		modellist << tempmodel;
+
+		if(tempmodel->lastError().type() != 0)
+		{
+			last_Errors = tempmodel->lastError().text();
+			emit errors(true);
+			return;
+		}
 	}
-	else
+
+	for(int i=modellist.count()-1; i>=0; --i)
 	{
-		this->setModel(this->abfrmodell);
-		this->resizeColumnsToContents();
-		this->show();
-		emit errors(false);
+		//das mit rowcount funktioniert möglicherweise nicht für alle DBSe
+		if(modellist.at(i)->rowCount() > 0)
+		{
+			this->setModel(modellist.at(i));
+			this->resizeColumnsToContents();
+			this->show();
+			emit errors(false);
+			break;
+		}
 	}
 }
-
-/*void Hauptfenster::on_lineEdit_Abfrage_returnPressed()
-{
-	QSqlQueryModel* tablemodel = new QSqlQueryModel();
-	tablemodel->setQuery(this->query_history->text());
-}*/

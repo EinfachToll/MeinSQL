@@ -37,7 +37,6 @@ AbfrageTextEdit::AbfrageTextEdit(QWidget *parent) :
 
 	connect(this->speichern, SIGNAL(triggered()), this, SLOT(abfragespeichern()));
 	connect(this->laden, SIGNAL(triggered()), this, SLOT(abfrageladen()));
-	connect(this, SIGNAL(neueAbfrage(QString)), this, SLOT(abfragemachen(QString)));
 	connect(this, SIGNAL(textChanged()), this, SLOT(hatsichwasgetan()));
 
 	this->waspos = 0;
@@ -48,7 +47,7 @@ void AbfrageTextEdit::keyPressEvent(QKeyEvent* e) {
 			 //(e->modifiers()==Qt::ShiftModifier) &&
 	if(e->key()==Qt::Key_F9)
 		//if(this->einzeln->isChecked())
-			emit neueAbfrage(this->toPlainText());
+			abfragemachen(this->toPlainText());
 
 	if(e->key()==Qt::Key_PageUp)
 		washoch();
@@ -60,7 +59,7 @@ void AbfrageTextEdit::keyPressEvent(QKeyEvent* e) {
 
 void AbfrageTextEdit::abfragemachen(QString abfrage)
 {
-	washinzu(abfrage);
+	emit neueAbfrage(abfrage);
 }
 
 void AbfrageTextEdit::washinzu(QString abfrage)
@@ -141,4 +140,10 @@ void AbfrageTextEdit::hatsichwasgetan()
 {
 	wasgeaendert = true;
 	std::cout << "jupp\n";
+}
+
+void AbfrageTextEdit::errors_occured(bool errors)
+{
+	if(!errors)
+		washinzu(this->toPlainText());
 }

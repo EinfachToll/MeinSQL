@@ -12,7 +12,7 @@ public:
 	QString last_Errors;
 
 private:
-	QSqlQueryModel* abfrmodell;
+	QList<QSqlQueryModel*> modellist;
 
 signals:
 	void errors(bool);

@@ -29,6 +29,7 @@ Hauptfenster::Hauptfenster(QWidget *parent) :
 	this->ui->toolButton->setMenu(hist_einst_menue);
 	connect(this->abfrageTE, SIGNAL(neueAbfrage(QString)), this->tabel_abfrage, SLOT(setzAbfr(QString)));
 	connect(this->tabel_abfrage, SIGNAL(errors(bool)), this, SLOT(neueAbfr(bool)));
+	connect(this->tabel_abfrage, SIGNAL(errors(bool)), this->abfrageTE, SLOT(errors_occured(bool)));
 }
 
 Hauptfenster::~Hauptfenster()
