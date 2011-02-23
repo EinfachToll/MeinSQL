@@ -12,8 +12,10 @@ public:
 
 private:
 	QTimer* stoppuhr;
+	QString query;
 
-signals:
+public slots:
+	//virtual void set_query(QString);
 
 protected slots:
 	void spalten_richten();

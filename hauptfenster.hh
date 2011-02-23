@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include "dialog_verbinden.hh"
+#include "infotabelle.hh"
 #include "atabelle.hh"
 #include "sqltabelle.hh"
 #include "abfragetextedit.hh"
@@ -37,8 +38,8 @@ private:
 	QSqlDatabase db;
 	void sqlabfrage(QString abfrage/*, bool erganzeigen*/);
 	QSqlQuery abfrage;
-	ATabelle* tabel_beschr;
 	QHBoxLayout* tab_beschr_layout;
+	InfoTabelle* tabel_beschr;
 	ATabelle* tabel_abfrage;
 	QHBoxLayout* tab_abfr_layout;
 	SQLTabelle* sqltabelle;

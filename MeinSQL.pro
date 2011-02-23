@@ -11,14 +11,16 @@ SOURCES += main.cpp \
     mysqlhighlighter.cpp \
     sqltabelle.cpp \
     atabelle.cpp \
-    abfragetextedit.cpp
+    abfragetextedit.cpp \
+    infotabelle.cpp
 HEADERS += hauptfenster.hh \
     dialog_verbinden.hh \
     tabelle.hh \
     mysqlhighlighter.h \
     sqltabelle.hh \
     atabelle.hh \
-    abfragetextedit.hh
+    abfragetextedit.hh \
+    infotabelle.hh
 FORMS += hauptfenster.ui \
     dialog_verbinden.ui
 

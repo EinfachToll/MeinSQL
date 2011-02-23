@@ -9,7 +9,7 @@ ATabelle::ATabelle(QWidget *parent) :
 	//this->abfrmodell = new QSqlQueryModel();
 }
 
-void ATabelle::setzAbfr(QString abfr)
+void ATabelle::set_query(QString abfr)
 {
 	QStringList queries = abfr.split(QRegExp(";\\s*\n"), QString::SkipEmptyParts);
 

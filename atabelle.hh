@@ -10,15 +10,15 @@ class ATabelle : public Tabelle
 public:
 	explicit ATabelle(QWidget *parent = 0);
 	QString last_Errors;
+	QList<QSqlQueryModel*> modellist;
 
 private:
-	QList<QSqlQueryModel*> modellist;
 
 signals:
 	void errors(bool);
 
 public slots:
-	void setzAbfr(QString);
+	void set_query(QString);
 
 };
 

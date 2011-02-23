@@ -75,7 +75,7 @@ void AbfrageTextEdit::washinzu(QString abfrage)
 
 void AbfrageTextEdit::washoch()
 {
-	qDebug() << wasbishergeschah << waspos;
+	//qDebug() << wasbishergeschah << waspos;
 	if(waspos==0)
 		return;
 	if(wasgeaendert && waspos!=wasbishergeschah.count())
@@ -88,12 +88,12 @@ void AbfrageTextEdit::washoch()
 	this->waspos--;
 	this->setText(this->wasbishergeschah.at(this->waspos));
 	wasgeaendert = false;
-	qDebug() << wasbishergeschah << waspos;
+	//qDebug() << wasbishergeschah << waspos;
 }
 
 void AbfrageTextEdit::wasrunter()
 {
-	qDebug() << wasbishergeschah << waspos;
+	//qDebug() << wasbishergeschah << waspos;
 	if(waspos==wasbishergeschah.count())
 		return;
 	if(wasgeaendert)
@@ -106,7 +106,7 @@ void AbfrageTextEdit::wasrunter()
 	else
 		this->clear();
 	wasgeaendert = false;
-	qDebug() << wasbishergeschah << waspos;
+	//qDebug() << wasbishergeschah << waspos;
 }
 
 void AbfrageTextEdit::abfragespeichern()
@@ -139,7 +139,7 @@ void AbfrageTextEdit::abfrageladen()
 void AbfrageTextEdit::hatsichwasgetan()
 {
 	wasgeaendert = true;
-	std::cout << "jupp\n";
+	//std::cout << "jupp\n";
 }
 
 void AbfrageTextEdit::errors_occured(bool errors)

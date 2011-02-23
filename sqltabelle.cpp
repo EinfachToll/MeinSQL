@@ -1,9 +1,17 @@
 #include "sqltabelle.hh"
+#include <QHeaderView>
+#include <QDebug>
+#include <QSqlRecord>
 
 SQLTabelle::SQLTabelle(QWidget* parent) :
 	Tabelle(parent)
 {
 	this->tabelle = "";
+	this->setSortingEnabled(false);
+	//this->model = new QSqlQueryModel();
+	//this->setModel(this->model);
+	this->setSelectionBehavior(QAbstractItemView::SelectItems);
+	connect(this->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortieren(int)));
 }
 
 SQLTabelle::~SQLTabelle()
@@ -12,15 +20,29 @@ SQLTabelle::~SQLTabelle()
 
 void SQLTabelle::malen()
 {
-	model = new QSqlTableModel();
-	model->setTable(this->tabelle);
-	model->setFilter("true LIMIT 1000");		//mieser Hack
+	qDebug() << "hä?" << tabelle << sortierennach;
+	//model->setSort(0, Qt::DescendingOrder); //frag mich ma, warum das nich funktioniert!!!
+	model->setTable(tabelle);
+	QString filterstring = "true";
+	if(sortierennach != "")
+		filterstring += " ORDER BY " + sortierennach + sortierenrichtung;
+	filterstring += " LIMIT " + limit;
+	qDebug() << filterstring;
+	model->setFilter(filterstring);		//mieser Hack
 	model->setEditStrategy(QSqlTableModel::OnManualSubmit);
 	model->select();
 
 	this->setModel(model);
 	this->spalten_richten();
 	this->show();
+
+	/*
+	QString query = "SELECT * FROM " + this->tabelle;
+	if(this->sortierennach != "")
+		query += " ORDER BY " + sortierennach + sortierenrichtung;
+	query += " LIMIT " + limit;
+	set_query(query);
+	*/
 
 	/*
 	this->ui->tableWidget_Tabelle->setRowCount(model->rowCount() + 1);
@@ -37,6 +59,18 @@ void SQLTabelle::malen()
 	}
 	this->ui->tableWidget_Tabelle->blockSignals(false);
 	*/
+
+	//sortieren(0);
+}
+
+void SQLTabelle::set_query(QString qu) //was soll das?
+{
+	qDebug() << qu;
+	//this->sortierennach = "";
+	//sortierenrichtung = " DESC";
+	//this->model->setQuery(qu);
+	this->spalten_richten();
+	this->show();
 }
 
 void SQLTabelle::leeren()
@@ -47,11 +81,39 @@ void SQLTabelle::leeren()
 
 void SQLTabelle::setTabelle(QString tabelle)
 {
+	model = new QSqlTableModel;
+	this->limit = "1000";
+	sortierenrichtung = " DESC";
+	sortierennach = "";
 	this->tabelle = tabelle;
 }
 
 void SQLTabelle::sortieren(int spalte)
 {
+	QString geklickt = infomodel->record(spalte).value("FIELD").toString();
+	if(geklickt==sortierennach)
+		sortierenrichtung = sortierenrichtung==" DESC" ? " ASC" : " DESC";
+	else
+	{
+		sortierennach = geklickt;
+		sortierenrichtung = " ASC";
+	}
+
+	/*if(sortierennach == spalte)
+		sortierenrichtung = sortierenrichtung==Qt::DescendingOrder ? Qt::AscendingOrder : Qt::DescendingOrder;
+	else
+	{
+		sortierennach = spalte;
+		sortierenrichtung = Qt::AscendingOrder;
+	}*/
+	//model->setSort(sortierennach, sortierenrichtung);
+	//model->select();
+	//sortierennach = -1;
+	malen();
+	qDebug() << "asdfasdfasfd" << spalte << sortierenrichtung;
+	/*malen();
+	this->show();
+	*/
 }
 
 /*

@@ -2,6 +2,7 @@
 #define SQLTABELLE_HH
 
 #include "tabelle.hh"
+#include <QSqlQueryModel>
 #include <QSqlTableModel>
 
 class SQLTabelle : public Tabelle
@@ -13,11 +14,20 @@ public:
 	void setTabelle(QString tabelle);
 	void malen();
 	void leeren();
+	QSqlQueryModel* infomodel;
 
 private:
-	void sortieren(int);
 	QSqlTableModel* model;
 	QString tabelle;
+	QString sortierennach;
+	QString limit;
+	QString sortierenrichtung;
+
+private slots:
+	void sortieren(int);
+
+public slots:
+	void set_query(QString);
 };
 
 #endif // SQLTABELLE_HH

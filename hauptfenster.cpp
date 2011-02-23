@@ -15,13 +15,16 @@ Hauptfenster::Hauptfenster(QWidget *parent) :
 	this->andere_Tab=false;
 
 
-	tabel_beschr = new ATabelle();
+	tabel_beschr = new InfoTabelle();
 	this->tab_beschr_layout = new QHBoxLayout(this->ui->tab_4);
 	this->tab_beschr_layout->addWidget(this->tabel_beschr);
+
 	tabel_abfrage = new ATabelle();
 	this->tab_abfr_layout = new QHBoxLayout(this->ui->tab_2);
 	this->tab_abfr_layout->addWidget(this->tabel_abfrage);
+
 	this->sqltabelle = new SQLTabelle();
+	this->sqltabelle->infomodel = tabel_beschr->infomodel;
 	ui->verticalLayout_SQLTab->addWidget(this->sqltabelle);
 	this->abfrageTE = new AbfrageTextEdit(this);
 	ui->horizontalLayout->addWidget(this->abfrageTE);
@@ -120,10 +123,9 @@ void Hauptfenster::on_listWidget_DBs_itemActivated(QListWidgetItem* item)
 void Hauptfenster::on_listWidget_Tabellen_itemActivated(QListWidgetItem* item)
 {
 	qDebug() << "Tabelle " << item->text() << " ausgewählt";
-	QSqlQueryModel* tabbeschmodel = new QSqlQueryModel();
-	tabbeschmodel->setQuery("DESCRIBE " + item->text() + ";");
+	tabel_beschr->infomodel->setQuery("DESCRIBE " + item->text() + ";");
 
-	this->tabel_beschr->setModel(tabbeschmodel);
+	this->tabel_beschr->setModel(tabel_beschr->infomodel);
 	//this->tabel_beschr->resizeColumnsToContents();
 	this->tabel_beschr->show();
 
