@@ -11,7 +11,6 @@ SQLTabelle::SQLTabelle(QWidget* parent) :
 	//this->model = new QSqlQueryModel();
 	//this->setModel(this->model);
 	this->setSelectionBehavior(QAbstractItemView::SelectItems);
-	connect(this->horizontalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(sortieren(int)));
 }
 
 SQLTabelle::~SQLTabelle()
@@ -20,7 +19,7 @@ SQLTabelle::~SQLTabelle()
 
 void SQLTabelle::malen()
 {
-	qDebug() << "hä?" << tabelle << sortierennach;
+	qDebug() << tabelle << sortierennach;
 	//model->setSort(0, Qt::DescendingOrder); //frag mich ma, warum das nich funktioniert!!!
 	model->setTable(tabelle);
 	QString filterstring = "true";
@@ -114,6 +113,10 @@ void SQLTabelle::sortieren(int spalte)
 	/*malen();
 	this->show();
 	*/
+}
+
+void SQLTabelle::filtern(QString)
+{
 }
 
 /*

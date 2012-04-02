@@ -147,3 +147,7 @@ void AbfrageTextEdit::errors_occured(bool errors)
 	if(!errors)
 		washinzu(this->toPlainText());
 }
+
+/*Zutun:
+Gibt n Fehler -> auf ab geht nicht
+*/

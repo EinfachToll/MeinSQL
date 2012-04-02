@@ -30,9 +30,9 @@ Hauptfenster::Hauptfenster(QWidget *parent) :
 	ui->horizontalLayout->addWidget(this->abfrageTE);
 
 	this->ui->toolButton->setMenu(hist_einst_menue);
-	connect(this->abfrageTE, SIGNAL(neueAbfrage(QString)), this->tabel_abfrage, SLOT(setzAbfr(QString)));
-	connect(this->tabel_abfrage, SIGNAL(errors(bool)), this, SLOT(neueAbfr(bool)));
-	connect(this->tabel_abfrage, SIGNAL(errors(bool)), this->abfrageTE, SLOT(errors_occured(bool)));
+	connect(this->abfrageTE, SIGNAL(neueAbfrage(QString)), this->tabel_abfrage, SLOT(setze_Abfrage(QString)));
+	connect(this->tabel_abfrage, SIGNAL(fehler(bool)), this, SLOT(neueAbfr(bool)));
+	connect(this->tabel_abfrage, SIGNAL(fehler(bool)), this->abfrageTE, SLOT(errors_occured(bool)));
 }
 
 Hauptfenster::~Hauptfenster()
@@ -98,7 +98,7 @@ void Hauptfenster::on_pushButton_Trennen_clicked()
 {
 	db.close();
 	Label_verbunden.setText(tr("Nicht verbunden"));
-	qDebug() << tr("Verbindung getrennt");
+	//qDebug() << tr("Verbindung getrennt");
 	this->ui->pushButton_Verbinden->setEnabled(true);
 	this->ui->pushButton_Trennen->setDisabled(true);
 	this->ui->listWidget_DBs->clear();
@@ -109,7 +109,7 @@ void Hauptfenster::on_pushButton_Trennen_clicked()
 
 void Hauptfenster::on_listWidget_DBs_itemActivated(QListWidgetItem* item)
 {
-	qDebug() << "Datenbank " << item->text() << " ausgewählt";
+	//qDebug() << "Datenbank " << item->text() << " ausgewählt";
 	this->ui->listWidget_Tabellen->clear();
 	QSqlQuery query;
 	query.exec("USE " + item->text() + ";");
@@ -122,7 +122,7 @@ void Hauptfenster::on_listWidget_DBs_itemActivated(QListWidgetItem* item)
 
 void Hauptfenster::on_listWidget_Tabellen_itemActivated(QListWidgetItem* item)
 {
-	qDebug() << "Tabelle " << item->text() << " ausgewählt";
+	//qDebug() << "Tabelle " << item->text() << " ausgewählt";
 	tabel_beschr->infomodel->setQuery("DESCRIBE " + item->text() + ";");
 
 	this->tabel_beschr->setModel(tabel_beschr->infomodel);
@@ -149,7 +149,7 @@ void Hauptfenster::neueAbfr(bool errors)
 {
 	if(errors)
 	{
-		ui->plainTextEdit_Log->appendPlainText(tabel_abfrage->last_Errors);
+		ui->plainTextEdit_Log->appendPlainText(tabel_abfrage->letzte_Fehler);
 		ui->tabWidget->setCurrentIndex(0);
 	}
 	else

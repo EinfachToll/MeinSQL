@@ -24,7 +24,8 @@ private:
 	QString sortierenrichtung;
 
 private slots:
-	void sortieren(int);
+	virtual void sortieren(int);
+	virtual void filtern(QString);
 
 public slots:
 	void set_query(QString);

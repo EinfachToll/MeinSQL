@@ -42,7 +42,10 @@
     <item row="0" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>Host:</string>
+       <string>&amp;Host:</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEdit_Host</cstring>
       </property>
      </widget>
     </item>
@@ -56,7 +59,10 @@
     <item row="1" column="0">
      <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>Benutzer:</string>
+       <string>&amp;Benutzer:</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEdit_Benutzer</cstring>
       </property>
      </widget>
     </item>
@@ -70,7 +76,10 @@
     <item row="2" column="0">
      <widget class="QLabel" name="label_3">
       <property name="text">
-       <string>Passwort:</string>
+       <string>&amp;Passwort:</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEdit_Passwort</cstring>
       </property>
      </widget>
     </item>
@@ -87,7 +96,10 @@
     <item row="3" column="0">
      <widget class="QLabel" name="label_4">
       <property name="text">
-       <string>Port:</string>
+       <string>P&amp;ort:</string>
+      </property>
+      <property name="buddy">
+       <cstring>spinBox_Port</cstring>
       </property>
      </widget>
     </item>
@@ -104,7 +116,10 @@
     <item row="4" column="0">
      <widget class="QLabel" name="label_6">
       <property name="text">
-       <string>Datenbank:</string>
+       <string>&amp;Datenbank:</string>
+      </property>
+      <property name="buddy">
+       <cstring>lineEdit_Datenbank</cstring>
       </property>
      </widget>
     </item>
@@ -117,7 +132,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -130,7 +145,10 @@
     <item>
      <widget class="QLabel" name="label_5">
       <property name="text">
-       <string>Tabellenlänge beschränken auf:</string>
+       <string>&amp;Tabellenlänge beschränken auf:</string>
+      </property>
+      <property name="buddy">
+       <cstring>spinBox</cstring>
       </property>
      </widget>
     </item>

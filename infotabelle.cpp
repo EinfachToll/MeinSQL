@@ -5,3 +5,11 @@ InfoTabelle::InfoTabelle(QWidget *parent) :
 {
 	infomodel = new QSqlQueryModel();
 }
+
+void InfoTabelle::sortieren(int)
+{
+}
+
+void InfoTabelle::filtern(QString)
+{
+}

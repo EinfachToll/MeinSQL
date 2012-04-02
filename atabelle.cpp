@@ -9,34 +9,45 @@ ATabelle::ATabelle(QWidget *parent) :
 	//this->abfrmodell = new QSqlQueryModel();
 }
 
-void ATabelle::set_query(QString abfr)
+void ATabelle::setze_Abfrage(QString abfr)
 {
-	QStringList queries = abfr.split(QRegExp(";\\s*\n"), QString::SkipEmptyParts);
+	QStringList abfragen = abfr.split(QRegExp(";\\s*\n"), QString::SkipEmptyParts);
 
-	for(int i=0; i<queries.count(); ++i)
+	foreach(QString abfrage, abfragen)
 	{
-		QSqlQueryModel* tempmodel = new QSqlQueryModel();
-		tempmodel->setQuery(queries.at(i));
-		modellist << tempmodel;
+		QSqlQueryModel* tempmodel = new QSqlQueryModel();//die muss man natürlich auch mal wieder löschen
+
+
+		tempmodel->setQuery(abfrage);
+		modelliste << tempmodel;
 
 		if(tempmodel->lastError().type() != 0)
 		{
-			last_Errors = tempmodel->lastError().text();
-			emit errors(true);
+			letzte_Fehler = tempmodel->lastError().text();
+			emit fehler(true);
 			return;
 		}
 	}
 
-	for(int i=modellist.count()-1; i>=0; --i)
+	for(int i=modelliste.count()-1; i>=0; --i)
 	{
 		//das mit rowcount funktioniert möglicherweise nicht für alle DBSe
-		if(modellist.at(i)->rowCount() > 0)
+		if(modelliste.at(i)->rowCount() > 0)
 		{
-			this->setModel(modellist.at(i));
+			this->setModel(modelliste.at(i));
 			this->resizeColumnsToContents();
 			this->show();
-			emit errors(false);
+			emit fehler(false);
 			break;
 		}
 	}
+}
+
+void ATabelle::filtern(QString)
+{
+}
+
+void ATabelle::sortieren(int)
+{
+
 }

@@ -9,16 +9,20 @@ class ATabelle : public Tabelle
     Q_OBJECT
 public:
 	explicit ATabelle(QWidget *parent = 0);
-	QString last_Errors;
-	QList<QSqlQueryModel*> modellist;
+	QString letzte_Fehler;
+	QList<QSqlQueryModel*> modelliste;
 
 private:
 
 signals:
-	void errors(bool);
+	void fehler(bool);
 
 public slots:
-	void set_query(QString);
+	void setze_Abfrage(QString);
+
+private slots:
+	virtual void sortieren(int);
+	virtual void filtern(QString);
 
 };
 

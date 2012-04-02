@@ -24,5 +24,8 @@ HEADERS += hauptfenster.hh \
 FORMS += hauptfenster.ui \
     dialog_verbinden.ui
 
-OTHER_FILES += \
-    Readme.txt
+OTHER_FILES += Readme.txt
+
+TRANSLATIONS = meinsql_de.ts
+
+CODECFORTR = UTF-8

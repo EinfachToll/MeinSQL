@@ -4,24 +4,27 @@
 #include <QTableView>
 #include <QSqlError>
 
+/**
+  Basisklasse für die drei Tabellen, richtet die Spalten nach einer Sekunde richtig aus
+  */
 class Tabelle : public QTableView
 {
     Q_OBJECT
 public:
 	explicit Tabelle(QWidget *parent = 0);
+	virtual ~Tabelle() {};
 
 private:
 	QTimer* stoppuhr;
 	QString query;
 
-public slots:
-	//virtual void set_query(QString);
-
 protected slots:
 	void spalten_richten();
 
 private slots:
-	void spalten_schoen();
+	void stoppuhr_starten();
+	virtual void sortieren(int) {};
+	virtual void filtern(QString) {};
 
 };
 
