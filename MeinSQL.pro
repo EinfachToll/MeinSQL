@@ -5,24 +5,24 @@ QT += sql
 TARGET = MeinSQL
 TEMPLATE = app
 SOURCES += main.cpp \
-    hauptfenster.cpp \
-    dialog_verbinden.cpp \
-    tabelle.cpp \
+    mainwindow.cpp \
+    settingswindow.cpp \
+    table.cpp \
     mysqlhighlighter.cpp \
-    sqltabelle.cpp \
-    atabelle.cpp \
-    abfragetextedit.cpp \
-    infotabelle.cpp
-HEADERS += hauptfenster.hh \
-    dialog_verbinden.hh \
-    tabelle.hh \
+    sqltabletable.cpp \
+    querytable.cpp \
+    querytextedit.cpp \
+    infotable.cpp
+HEADERS += mainwindow.hh \
+    settingswindow.hh \
+    table.hh \
     mysqlhighlighter.h \
-    sqltabelle.hh \
-    atabelle.hh \
-    abfragetextedit.hh \
-    infotabelle.hh
-FORMS += hauptfenster.ui \
-    dialog_verbinden.ui
+    sqltabletable.hh \
+    querytable.hh \
+    querytextedit.hh \
+    infotable.hh
+FORMS += mainwindow.ui \
+    settingswindow.ui
 
 OTHER_FILES += Readme.txt
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Hauptfenster</class>
- <widget class="QMainWindow" name="Hauptfenster">
+ <class>Mainwindow</class>
+ <widget class="QMainWindow" name="Mainwindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Hauptfenster</string>
+   <string>Mainwindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -59,7 +59,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,2">
            <item>
-            <widget class="QPushButton" name="pushButton_Verbinden">
+            <widget class="QPushButton" name="pushButton_Connect">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                <horstretch>0</horstretch>
@@ -67,7 +67,7 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>Verbinden</string>
+              <string>Connect</string>
              </property>
             </widget>
            </item>
@@ -126,7 +126,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QListWidget" name="listWidget_Tabellen">
+          <widget class="QListWidget" name="listWidget_Tables">
            <property name="maximumSize">
             <size>
              <width>150</width>
@@ -204,7 +204,7 @@
        </widget>
        <widget class="QWidget" name="tab">
         <attribute name="title">
-         <string>Tabelle</string>
+         <string>Table</string>
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>

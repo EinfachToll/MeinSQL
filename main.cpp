@@ -1,5 +1,5 @@
 #include <QtGui/QApplication>
-#include "hauptfenster.hh"
+#include "mainwindow.hh"
 
 int main(int argc, char *argv[])
 {
@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 	translator.load(QString("meinsql_") + locale);
 	a.installTranslator(&translator);
 
-    Hauptfenster w;
+    Mainwindow w;
     w.show();
     return a.exec();
 }
