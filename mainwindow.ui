@@ -11,12 +11,12 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Mainwindow</string>
+   <string>MeinSQL</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QSplitter" name="splitter_2">
+     <widget class="QSplitter" name="main_splitter">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
@@ -26,7 +26,7 @@
       <property name="childrenCollapsible">
        <bool>false</bool>
       </property>
-      <widget class="QSplitter" name="splitter">
+      <widget class="QSplitter" name="splitter_betw_lists_and_te">
        <property name="minimumSize">
         <size>
          <width>938</width>
@@ -54,10 +54,10 @@
        <property name="handleWidth">
         <number>5</number>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1,2">
+          <layout class="QVBoxLayout" name="verticalLayout_Buttons" stretch="1,1,1,2">
            <item>
             <widget class="QPushButton" name="pushButton_Connect">
              <property name="sizePolicy">
@@ -72,7 +72,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="pushButton_Settings">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                <horstretch>0</horstretch>
@@ -80,12 +80,12 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>Einstellungen...</string>
+              <string>Settings…</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_Trennen">
+            <widget class="QPushButton" name="pushButton_Disconnect">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -96,12 +96,12 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>Trennen</string>
+              <string>Disconnect</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_2">
+            <widget class="QPushButton" name="pushButton_Quit">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
                <horstretch>0</horstretch>
@@ -109,7 +109,7 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>Beenden</string>
+              <string>Quit</string>
              </property>
             </widget>
            </item>
@@ -171,7 +171,7 @@
         </layout>
        </widget>
       </widget>
-      <widget class="QTabWidget" name="tabWidget">
+      <widget class="QTabWidget" name="the_tab_widget">
        <property name="sizePolicy">
         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
          <horstretch>1</horstretch>
@@ -187,7 +187,7 @@
        <property name="documentMode">
         <bool>true</bool>
        </property>
-       <widget class="QWidget" name="tab_3">
+       <widget class="QWidget" name="tab_log">
         <attribute name="title">
          <string>Log</string>
         </attribute>
@@ -202,7 +202,7 @@
          </property>
         </widget>
        </widget>
-       <widget class="QWidget" name="tab">
+       <widget class="QWidget" name="tab_table">
         <attribute name="title">
          <string>Table</string>
         </attribute>
@@ -212,12 +212,12 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="tab_4">
+       <widget class="QWidget" name="tab_info">
         <attribute name="title">
          <string>Beschreibung</string>
         </attribute>
        </widget>
-       <widget class="QWidget" name="tab_2">
+       <widget class="QWidget" name="tab_query">
         <attribute name="title">
          <string>Abfrage</string>
         </attribute>

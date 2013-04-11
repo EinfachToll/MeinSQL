@@ -48,12 +48,12 @@ private:
 
 
 private slots:
-	void on_pushButton_2_clicked();
 	void on_listWidget_Tables_itemActivated(QListWidgetItem* item);
 	void on_listWidget_DBs_itemActivated(QListWidgetItem* item);
-	void on_pushButton_Trennen_clicked();
-	void on_pushButton_clicked();
+	void on_pushButton_Disconnect_clicked();
 	void on_pushButton_Connect_clicked();
+	void on_pushButton_Quit_clicked();
+	void on_pushButton_Settings_clicked();
 	void new_query(bool);
 };
 

@@ -16,11 +16,11 @@ Mainwindow::Mainwindow(QWidget *parent) :
 
 
 	infotable = new Infotable();
-	this->infotable_layout = new QHBoxLayout(this->ui->tab_4);
+	this->infotable_layout = new QHBoxLayout(this->ui->tab_info);
 	this->infotable_layout->addWidget(this->infotable);
 
 	querytable = new Querytable();
-	this->querytable_layout = new QHBoxLayout(this->ui->tab_2);
+	this->querytable_layout = new QHBoxLayout(this->ui->tab_query);
 	this->querytable_layout->addWidget(this->querytable);
 
 	this->sqltabletable = new SQLtabletable();
@@ -69,7 +69,7 @@ void Mainwindow::on_pushButton_Connect_clicked()
 	show_if_connected.setText(tr("Connected"));
 	qDebug() << "Connected";
 	this->ui->pushButton_Connect->setDisabled(true);
-	this->ui->pushButton_Trennen->setEnabled(true);
+	this->ui->pushButton_Disconnect->setEnabled(true);
 
 	QSqlQuery query;
 	query.exec("SHOW DATABASES;");
@@ -81,7 +81,7 @@ void Mainwindow::on_pushButton_Connect_clicked()
 	}
 }
 
-void Mainwindow::on_pushButton_clicked()
+void Mainwindow::on_pushButton_Settings_clicked()
 {
 	settingswindow.show();
 }
@@ -94,12 +94,12 @@ void Mainwindow::perform_sql_query(QString query/*, bool show_result*/)
 	this->ui->statusBar->showMessage(query, 5000);
 }
 
-void Mainwindow::on_pushButton_Trennen_clicked()
+void Mainwindow::on_pushButton_Disconnect_clicked()
 {
 	db.close();
 	show_if_connected.setText(tr("Not connected"));
 	this->ui->pushButton_Connect->setEnabled(true);
-	this->ui->pushButton_Trennen->setDisabled(true);
+	this->ui->pushButton_Disconnect->setDisabled(true);
 	this->ui->listWidget_DBs->clear();
 	this->ui->listWidget_Tables->clear();
 	this->sqltabletable->clear();
@@ -130,27 +130,28 @@ void Mainwindow::on_listWidget_Tables_itemActivated(QListWidgetItem* item)
 
 	this->sqltabletable->set_table(item->text());
 
-	if(ui->tabWidget->currentIndex()==0 || ui->tabWidget->currentIndex()==3)
-		ui->tabWidget->setCurrentIndex(1);
+	if(ui->the_tab_widget->currentIndex()==0 || ui->the_tab_widget->currentIndex()==3)
+		ui->the_tab_widget->setCurrentIndex(1);
 
-	if(ui->tabWidget->currentIndex()==1)
+	if(ui->the_tab_widget->currentIndex()==1)
 		this->sqltabletable->draw();
 	else
 		this->changed_tab = true;
 }
 
-void Mainwindow::on_pushButton_2_clicked()
-{
-	this->close();
-}
 
 void Mainwindow::new_query(bool errors)
 {
 	if(errors)
 	{
 		ui->plainTextEdit_Log->appendPlainText(querytable->last_error);
-		ui->tabWidget->setCurrentIndex(0);
+		ui->the_tab_widget->setCurrentIndex(0);
 	}
 	else
-		ui->tabWidget->setCurrentIndex(3);
+		ui->the_tab_widget->setCurrentIndex(3);
+}
+
+void Mainwindow::on_pushButton_Quit_clicked()
+{
+	this->close();
 }
