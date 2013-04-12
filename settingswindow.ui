@@ -59,7 +59,7 @@
     <item row="1" column="0">
      <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>&amp;Benutzer:</string>
+       <string>&amp;User:</string>
       </property>
       <property name="buddy">
        <cstring>lineEdit_User</cstring>
@@ -76,7 +76,7 @@
     <item row="2" column="0">
      <widget class="QLabel" name="label_3">
       <property name="text">
-       <string>&amp;Passwort:</string>
+       <string>&amp;Password:</string>
       </property>
       <property name="buddy">
        <cstring>lineEdit_Password</cstring>
@@ -116,7 +116,7 @@
     <item row="4" column="0">
      <widget class="QLabel" name="label_6">
       <property name="text">
-       <string>&amp;Datenbank:</string>
+       <string>&amp;Database:</string>
       </property>
       <property name="buddy">
        <cstring>lineEdit_Database</cstring>

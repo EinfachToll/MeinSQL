@@ -189,7 +189,7 @@
        </property>
        <widget class="QWidget" name="tab_log">
         <attribute name="title">
-         <string>Log</string>
+         <string>&amp;Log</string>
         </attribute>
         <widget class="QPlainTextEdit" name="plainTextEdit_Log">
          <property name="geometry">
@@ -204,7 +204,7 @@
        </widget>
        <widget class="QWidget" name="tab_table">
         <attribute name="title">
-         <string>Table</string>
+         <string>&amp;Table</string>
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
@@ -214,12 +214,12 @@
        </widget>
        <widget class="QWidget" name="tab_info">
         <attribute name="title">
-         <string>Beschreibung</string>
+         <string>&amp;Information</string>
         </attribute>
        </widget>
        <widget class="QWidget" name="tab_query">
         <attribute name="title">
-         <string>Abfrage</string>
+         <string>&amp;Query</string>
         </attribute>
        </widget>
       </widget>
